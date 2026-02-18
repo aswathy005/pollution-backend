@@ -71,3 +71,17 @@ export const login = async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 };
+
+export const getProfile = async (req, res) => {
+   try {
+    const user = await userSchema.findById(req.user.id).select("-pass")
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" })
+    }
+
+    res.json(user)
+  } catch (error) {
+    res.status(500).json({ message: "Server error" })
+  }
+}

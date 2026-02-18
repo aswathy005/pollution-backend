@@ -8,6 +8,7 @@ import healthRoutes from "./routes/healthRoutes.js";
 import HistoryRoutes from "./routes/historyRoutes.js";
 import testRoutes from "./routes/testRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
+import analysisRoutes from "./routes/analysisRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -23,7 +24,11 @@ app.use("/api/health", healthRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/history", HistoryRoutes);
 
+app.use("/api/analysis", analysisRoutes);
+
 app.use(errorHandler);
+
+
 
 
 
